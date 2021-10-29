@@ -63,10 +63,10 @@
             android:layout_marginTop="10dp" >
             <Button
                 android:id="@+id/buttonLogin"
+                android:background="@drawable/bordes"
                 android:layout_width="85dp"
                 android:layout_height="45dp"
                 android:textColor="@color/white"
-                android:background="@drawable/bordes"
                 android:text="LOGIN" />
 
             <TextView

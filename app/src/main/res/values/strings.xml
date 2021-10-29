@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Ejercicio1FAL</string>
+    <string name="app_name">Your Brain</string>
     <string name="Usuario">Usuario:</string>
     <string name="Contraseña">Contraseña:</string>
     <string name="error">Error:</string>
+    <string name="Usuarios">Lista de Usuarios:</string>
 </resources>

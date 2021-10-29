@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
                 String password = txtPass.getText().toString();
 
                 if ((usuario.equals("admin") && password.equals("liceo"))) {
-                    Intent intent = new Intent(Login.this, ListaUser.class);
+                    Intent intent = new Intent(Login.this, ListaUsuarios.class);
                     startActivity(intent);
                     finish();
                 } else {
