@@ -16,6 +16,7 @@ public class Login extends AppCompatActivity {
     private TextView lblPass;
     private EditText txtPass;
     private TextView lblError;
+    int intentos = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +29,10 @@ public class Login extends AppCompatActivity {
         txtPass = (EditText) findViewById(R.id.editPass);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                int intentos = 0;
+
                 String usuario = txtUsuario.getText().toString();
                 String password = txtPass.getText().toString();
 

@@ -74,8 +74,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
+                android:text="Usuario y/o contraseña incorrectos"
                 android:textSize="6pt"
-                android:textColor="#9F2323" />
+                android:visibility="invisible"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
