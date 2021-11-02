@@ -3,7 +3,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -15,13 +15,21 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
     private ArrayList<Usuarios>users;
 
     public static class UsuariosViewHolder extends RecyclerView.ViewHolder{
-        private TextView nombreUser;
+        private TextView txtNombre;
+        private TextView txtIdioma;
+        private TextView txtEdad;
         public UsuariosViewHolder(View itemView){
             super(itemView);
-            nombreUser = (TextView) itemView.findViewById(R.id.nombreBBDD);
+            txtNombre = (TextView) itemView.findViewById(R.id.nombre);
+            txtIdioma = (TextView) itemView.findViewById(R.id.idioma);
+            txtEdad =  (TextView) itemView.findViewById(R.id.edad);
+
         }
         public void bindUsuario(Usuarios t){
-                nombreUser.setText(t.getNombre());
+            txtNombre.setText(t.getNombre());
+            txtIdioma.setText(t.getIdioma());
+            txtEdad.setText(t.getEdad());
+
         }
     }
     public AdaptadorUsuarios(ArrayList<Usuarios>users){

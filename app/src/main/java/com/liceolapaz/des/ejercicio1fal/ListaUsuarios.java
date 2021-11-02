@@ -27,10 +27,10 @@ public class ListaUsuarios extends AppCompatActivity {
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-*/
+        */
         users = new ArrayList<Usuarios>();
         for (int i = 1; i<15; i++)// pasar en i el numero de usuarios de la bbdd
-        users.add(new Usuarios("nombre:" + i ));
+        users.add(new Usuarios("nombre:" , "idioma" , "edad"+i ));
         recyclerW=(RecyclerView) findViewById(R.id.recyclerW);
         recyclerW.setHasFixedSize(true);
         final AdaptadorUsuarios adaptUsers = new AdaptadorUsuarios(users);

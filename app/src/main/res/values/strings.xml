@@ -4,4 +4,6 @@
     <string name="Contraseña">Contraseña:</string>
     <string name="error">Error:</string>
     <string name="Usuarios">Lista de Usuarios:</string>
+    <item name="idioma" type="id" />
+    <item name="edad" type="id" />
 </resources>
