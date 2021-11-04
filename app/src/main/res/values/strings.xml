@@ -4,6 +4,13 @@
     <string name="Contraseña">Contraseña:</string>
     <string name="error">Error:</string>
     <string name="Usuarios">Lista de Usuarios:</string>
+    <string name="email">email</string>
+    <string name="idioma">idioma</string>
+    <string name="edad">edad</string>
+    <string name="Nombre">nombre</string>
+    <string name="Aceptar">aceptar</string>
+    <string name="Cancelar">cancelar</string>
+    <string name="Eliminar">eliminar</string>
     <item name="idioma" type="id" />
     <item name="edad" type="id" />
 </resources>

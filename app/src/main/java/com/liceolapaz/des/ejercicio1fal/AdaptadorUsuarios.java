@@ -28,11 +28,11 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
         public void bindUsuario(Usuarios t){
             txtNombre.setText(t.getNombre());
             txtIdioma.setText(t.getIdioma());
-            txtEdad.setText(t.getEdad());
+            txtEdad.setText( "Edad:"+ t.getEdad());
 
         }
     }
-    public AdaptadorUsuarios(ArrayList<Usuarios>users){
+    public AdaptadorUsuarios(ArrayList<Usuario> users){
         this.users = users;
     }
 

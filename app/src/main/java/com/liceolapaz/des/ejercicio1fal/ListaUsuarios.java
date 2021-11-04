@@ -1,50 +1,95 @@
 package com.liceolapaz.des.ejercicio1fal;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toolbar;
-
 import java.util.ArrayList;
 
 public class ListaUsuarios extends AppCompatActivity {
-    private ArrayList<Usuarios>users;
+    private ArrayList<Usuario>users;
     private RecyclerView recyclerW;
-    private Button agregar;
+    private Button buttonAgregar;
+    private SQLiteDatabase db;
+    private TextView numUsuarios;
+    private AdaptadorUsuarios adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listausuarios);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        */
-        users = new ArrayList<Usuarios>();
-        for (int i = 1; i<15; i++)// pasar en i el numero de usuarios de la bbdd
-        users.add(new Usuarios("nombre:" , "idioma" , "edad"+i ));
-        recyclerW=(RecyclerView) findViewById(R.id.recyclerW);
-        recyclerW.setHasFixedSize(true);
-        final AdaptadorUsuarios adaptUsers = new AdaptadorUsuarios(users);
 
-        adaptUsers.setOnClickListener(new View.OnClickListener() {
+        UsersSQLLiteOpen liteOpen = new UsersSQLLiteOpen(this, "UsuariosDDBB",null,1);
+
+        db = liteOpen.getWritableDatabase();
+        buttonAgregar = (Button) findViewById(R.id.buttonAgregar);
+        users = new ArrayList<Usuario>();
+        recyclerW = (RecyclerView) findViewById(R.id.recyclerW);
+        recyclerW.setHasFixedSize(true);
+        numUsuarios = (TextView) findViewById(R.id.NumUsuarios);
+        adaptador = new AdaptadorUsuarios(users);
+        adaptador.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                Log.i("RecyclerView", "Pulsado" + recyclerW.getChildAdapterPosition(view));
+                Intent intent = new Intent(ListaUsuarios.this, NuevoUsuario.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("NOMBRE",users.get(recyclerW.getChildAdapterPosition(view).getNombreUsuario());
+                bundle.putString("PASS", users.get(recyclerW.getChildAdapterPosition(view).getPass));
+                bundle.putString("EMAIL", users.get(recyclerW.getChildAdapterPosition(view).getEmail));
+                bundle.putInt("EDAD", users.get(recyclerW.getChildAdapterPosition(view).getEdadUsuario));
+
+                intent.putExtras(bundle);
+                startActivity(intent);
+
             }
         });
-        recyclerW.setAdapter(adaptUsers);
-        recyclerW.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+        cargarUsuarios();
+        recyclerW.setAdapter(adaptador);
+        recyclerW.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerW.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerW.setItemAnimator(new DefaultItemAnimator());
+
+        buttonAgregar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListaUsuarios.this, NuevoUsuario.class);
+                Bundle bundle = new Bundle();
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void cargarUsuarios(){
+        String sql = "SELECT email,password,nombre,idioma,edad FROM usuarios";
+        Cursor c = db.rawQuery(sql,null);
+        if (c.moveToFirst()){
+            do{
+                String email = c.getString(0);
+                String pass = c.getString(1);
+                String nom = c.getString(2);
+                String id = c.getString(3);
+                int ed = Integer.parseInt(c.getString(4));
+                Usuario reg = new Usuario(email, pass, nom, id, ed);
+               // users.add(reg);
+            }while (c.moveToNext());
+        }
+        numUsuarios.setText(String.valueOf(users.size()));
+        db.close();
+
+
     }
 
 }

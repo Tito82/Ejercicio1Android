@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ejercicio1FAL">
         <activity
-            android:name=".UsuarioDePrueba"
+            android:name=".NuevoUsuario"
             android:exported="false" />
         <activity
             android:name=".ListaUsuarios"
