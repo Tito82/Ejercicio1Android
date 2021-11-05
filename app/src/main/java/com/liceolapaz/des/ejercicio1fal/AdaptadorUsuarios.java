@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.UsuariosViewHolder> implements View.OnClickListener {
 
     private View.OnClickListener listener;
-    private ArrayList<Usuarios>users;
+    private ArrayList<Usuario>users;
 
     public static class UsuariosViewHolder extends RecyclerView.ViewHolder{
         private TextView txtNombre;
@@ -25,10 +25,10 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
             txtEdad =  (TextView) itemView.findViewById(R.id.edad);
 
         }
-        public void bindUsuario(Usuarios t){
-            txtNombre.setText(t.getNombre());
-            txtIdioma.setText(t.getIdioma());
-            txtEdad.setText( "Edad:"+ t.getEdad());
+        public void bindUsuario(Usuario t){
+            txtNombre.setText(t.getNombreUsuario());
+            txtIdioma.setText(t.getIdiomaUsuario());
+            txtEdad.setText( "Edad:"+ t.getEdadUsuario());
 
         }
     }
@@ -46,7 +46,7 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
 
     @Override
     public void onBindViewHolder(UsuariosViewHolder viewHolder, int position) {
-        Usuarios item = users.get(position);
+        Usuario item = users.get(position);
         viewHolder.bindUsuario(item);
     }
 

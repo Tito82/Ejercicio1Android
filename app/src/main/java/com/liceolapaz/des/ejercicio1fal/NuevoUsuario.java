@@ -68,9 +68,9 @@ public class NuevoUsuario extends AppCompatActivity {
         btAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-            //    DialogoAceptar dialogo = new DialogoAceptar(ActivityDatosUsuarios.this);
-             //   dialogo.show(fragmentManager, "tagConfirmacion");
+               FragmentManager fragmentManager = getSupportFragmentManager();
+               DialogoAceptar dialogo = new DialogoAceptar(NuevoUsuario.this);
+               dialogo.show(fragmentManager, "tagConfirmacion");
             }
         });
 

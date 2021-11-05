@@ -44,10 +44,10 @@ public class ListaUsuarios extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ListaUsuarios.this, NuevoUsuario.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("NOMBRE",users.get(recyclerW.getChildAdapterPosition(view).getNombreUsuario());
-                bundle.putString("PASS", users.get(recyclerW.getChildAdapterPosition(view).getPass));
-                bundle.putString("EMAIL", users.get(recyclerW.getChildAdapterPosition(view).getEmail));
-                bundle.putInt("EDAD", users.get(recyclerW.getChildAdapterPosition(view).getEdadUsuario));
+                bundle.putString("NOMBRE",users.get(recyclerW.getChildAdapterPosition(view)).getNombreUsuario());
+                bundle.putString("PASS", users.get(recyclerW.getChildAdapterPosition(view)).getPass());
+                bundle.putString("EMAIL", users.get(recyclerW.getChildAdapterPosition(view)).getEmail());
+                bundle.putInt("EDAD", users.get(recyclerW.getChildAdapterPosition(view)).getEdadUsuario());
 
                 intent.putExtras(bundle);
                 startActivity(intent);
