@@ -3,9 +3,9 @@ package com.liceolapaz.des.ejercicio1fal;
 public class Usuario {
 
     private String email;
-    private String NombreUsuario;
-    private String IdiomaUsuario;
-    private int EdadUsuario;
+    private String nombreUsuario;
+    private String idiomaUsuario;
+    private int edadUsuario;
     private String pass;
 
     public String getEmail() {
@@ -17,27 +17,27 @@ public class Usuario {
     }
 
     public String getNombreUsuario() {
-        return NombreUsuario;
+        return nombreUsuario;
     }
 
     public void setNombreUsuario(String nombreUsuario) {
-        NombreUsuario = nombreUsuario;
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getIdiomaUsuario() {
-        return IdiomaUsuario;
+        return idiomaUsuario;
     }
 
     public void setIdiomaUsuario(String idiomaUsuario) {
-        IdiomaUsuario = idiomaUsuario;
+        this.idiomaUsuario = idiomaUsuario;
     }
 
     public int getEdadUsuario() {
-        return EdadUsuario;
+        return edadUsuario;
     }
 
     public void setEdadUsuario(int edadUsuario) {
-        EdadUsuario = edadUsuario;
+        this.edadUsuario = edadUsuario;
     }
 
     public String getPass() {
@@ -48,12 +48,12 @@ public class Usuario {
         this.pass = pass;
     }
 
-    public Usuario(String email, String pass, String NombreUsuario, String IdiomaUsuario, int EdadUsuario) {
+    public Usuario(String email, String pass, String nombreUsuario, String idiomaUsuario, int edadUsuario) {
         this.email = email;
         this.pass = pass;
-        this.NombreUsuario = NombreUsuario;
-        this.IdiomaUsuario = IdiomaUsuario;
-        this.EdadUsuario = EdadUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.idiomaUsuario = idiomaUsuario;
+        this.edadUsuario = edadUsuario;
     }
 
 }

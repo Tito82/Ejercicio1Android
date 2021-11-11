@@ -28,7 +28,7 @@ import android.database.sqlite.SQLiteOpenHelper;
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-            db.execSQL("DROP TABLE IF EXISTS Usuarios");
+            db.execSQL("DROP TABLE IF EXISTS usuarios");
 
             db.execSQL(consultaCreacionTabla);
         }

@@ -11,6 +11,7 @@
     <string name="Aceptar">aceptar</string>
     <string name="Cancelar">cancelar</string>
     <string name="Eliminar">eliminar</string>
-    <item name="idioma" type="id" />
-    <item name="edad" type="id" />
+    <string name="Email">email</string>
+    <string name="Idioma">idioma</string>
+    <string name="Edad">edad</string>
 </resources>

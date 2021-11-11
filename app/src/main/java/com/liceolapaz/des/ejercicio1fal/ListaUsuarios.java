@@ -61,7 +61,6 @@ public class ListaUsuarios extends AppCompatActivity {
         recyclerW.setItemAnimator(new DefaultItemAnimator());
 
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListaUsuarios.this, NuevoUsuario.class);
@@ -83,7 +82,7 @@ public class ListaUsuarios extends AppCompatActivity {
                 String id = c.getString(3);
                 int ed = Integer.parseInt(c.getString(4));
                 Usuario reg = new Usuario(email, pass, nom, id, ed);
-               // users.add(reg);
+                users.add(reg);
             }while (c.moveToNext());
         }
         numUsuarios.setText(String.valueOf(users.size()));

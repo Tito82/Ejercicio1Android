@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 public class Login extends AppCompatActivity {
     private Button btLogin;
-    private TextView lblUsuario;
     private EditText txtUsuario;
-    private TextView lblPass;
     private EditText txtPass;
     private TextView lblError;
     int intentos = 0;
@@ -27,7 +25,6 @@ public class Login extends AppCompatActivity {
         lblError = (TextView) findViewById(R.id.mensajeError);
         txtUsuario = (EditText) findViewById(R.id.editUser);
         txtPass = (EditText) findViewById(R.id.editPass);
-
         btLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override

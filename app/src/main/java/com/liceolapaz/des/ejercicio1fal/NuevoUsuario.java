@@ -59,7 +59,7 @@ public class NuevoUsuario extends AppCompatActivity {
         txtPass.setText(bundle.getString("PASS"));
 
         if(bundle.getString("EMAIL") != null) {
-            spIdioma.setSelection(obtenerPosicionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
+            spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
             txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
         }
 
@@ -102,7 +102,7 @@ public class NuevoUsuario extends AppCompatActivity {
          });
     }
 
-    private int obtenerPosicionSpinner(Spinner spIdioma, String idioma) {
+    private int seleccionSpinner(Spinner spIdioma, String idioma) {
 
         datos = new String[]{"Selecciona idioma:", "Español(ES)", "Gallego(GL)", "Inglés(EN)"};
         int posicion = 0;
