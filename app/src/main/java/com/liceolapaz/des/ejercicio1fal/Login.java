@@ -28,7 +28,7 @@ public class Login extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
                 String usuario = txtUsuario.getText().toString();
                 String password = txtPass.getText().toString();

@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
@@ -16,7 +15,7 @@ public class DialogoAceptar extends DialogFragment {
         this.nuevoUsuario = nuevoUsuario;
     }
 
-    public NuevoUsuario getActivityDatosUsuarios() {
+    public NuevoUsuario getDatosUsers() {
         return nuevoUsuario;
     }
 
@@ -35,7 +34,7 @@ public class DialogoAceptar extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Aceptada.");
                         System.out.println(id);
-                        DialogoAceptar.this.getActivityDatosUsuarios().anadirUsuario();
+                        DialogoAceptar.this.getDatosUsers().anadirUsuario();
                         dialog.cancel();
                     }
                 })

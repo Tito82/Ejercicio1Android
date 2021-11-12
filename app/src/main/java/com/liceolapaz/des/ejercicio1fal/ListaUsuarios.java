@@ -48,7 +48,6 @@ public class ListaUsuarios extends AppCompatActivity {
                 bundle.putString("PASS", users.get(recyclerW.getChildAdapterPosition(view)).getPass());
                 bundle.putString("EMAIL", users.get(recyclerW.getChildAdapterPosition(view)).getEmail());
                 bundle.putInt("EDAD", users.get(recyclerW.getChildAdapterPosition(view)).getEdadUsuario());
-
                 intent.putExtras(bundle);
                 startActivity(intent);
 
@@ -59,21 +58,21 @@ public class ListaUsuarios extends AppCompatActivity {
         recyclerW.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerW.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerW.setItemAnimator(new DefaultItemAnimator());
-
         buttonAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 Intent intent = new Intent(ListaUsuarios.this, NuevoUsuario.class);
                 Bundle bundle = new Bundle();
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
         });
+
     }
 
-    private void cargarUsuarios(){
-        String sql = "SELECT email,password,nombre,idioma,edad FROM usuarios";
-        Cursor c = db.rawQuery(sql,null);
+    private void cargarUsuarios(){ //ejercicio bbss3 jesus
+
+        Cursor c = db.rawQuery("SELECT email,password,nombre,idioma,edad FROM usuarios",null);
         if (c.moveToFirst()){
             do{
                 String email = c.getString(0);
