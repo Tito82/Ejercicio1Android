@@ -76,10 +76,11 @@
         android:textColor="@color/white"
         android:textSize="18dp" />
     </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerW"
         android:layout_width="match_parent"
-        android:textColor="@color/white"
-        android:layout_height="680dp"/>
+        android:layout_height="680dp"
+        android:textColor="@color/white" />
 
 </LinearLayout>

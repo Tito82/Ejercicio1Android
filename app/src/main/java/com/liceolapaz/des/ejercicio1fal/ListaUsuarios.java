@@ -48,6 +48,7 @@ public class ListaUsuarios extends AppCompatActivity {
                 bundle.putString("PASS", users.get(recyclerW.getChildAdapterPosition(view)).getPass());
                 bundle.putString("EMAIL", users.get(recyclerW.getChildAdapterPosition(view)).getEmail());
                 bundle.putInt("EDAD", users.get(recyclerW.getChildAdapterPosition(view)).getEdadUsuario());
+                bundle.putString("IDIOMA", users.get(recyclerW.getChildAdapterPosition(view)).getIdiomaUsuario());/////////meter spiner
                 intent.putExtras(bundle);
                 startActivity(intent);
 
