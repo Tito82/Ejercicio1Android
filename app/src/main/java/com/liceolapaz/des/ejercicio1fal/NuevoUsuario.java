@@ -12,6 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+
 
 public class NuevoUsuario extends AppCompatActivity {
 
@@ -59,12 +63,12 @@ public class NuevoUsuario extends AppCompatActivity {
         txtNombreUsuario.setText(bundle.getString("NOMBRE"));
         btAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)  {
                FragmentManager fragmentManager = getSupportFragmentManager();
                DialogoAceptar dialogo = new DialogoAceptar(NuevoUsuario.this);
                dialogo.show(fragmentManager, "tagConfirmacion");
-
             }
+
 
         });
 
@@ -120,17 +124,39 @@ public class NuevoUsuario extends AppCompatActivity {
         datosNuevos.put("edad",Integer.parseInt(txtEdad.getText().toString()));
         datosNuevos.put("nombre",txtNombreUsuario.getText().toString());
         db.insert("usuarios",null,datosNuevos);
-        db.close();
+        //db.close();
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
 
     }
     private void eliminarUsuario() {
         db.delete("usuarios", "email=" + "'" + txtEmail.getText().toString() + "'", null);
-        db.close();
+        //db.close();
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    private void editarUsuario(){
+        ContentValues  datosEditados= new ContentValues();
+        datosEditados.put("email",txtEmail.getText().toString());
+        datosEditados.put("password",txtPass.getText().toString());
+        datosEditados.put("idioma", stringIdioma);
+        datosEditados.put("edad",Integer.parseInt(txtEdad.getText().toString()));
+        datosEditados.put("nombre",txtNombreUsuario.getText().toString());
+        //db.update("usuarios",null,datosEditados);
+        db.update("Usuarios", datosEditados, "email='" + txtEmail.getText().toString() +"'", null);
+        //db.close();
+        Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
+        startActivity(intent);
+    }
+    public void guardarOActualizar(){
+       if(txtEmail.getText()==null){
+            anadirUsuario();
+        }else{
+            editarUsuario();
+        }
+    }
+
     private void cancelar() {
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);

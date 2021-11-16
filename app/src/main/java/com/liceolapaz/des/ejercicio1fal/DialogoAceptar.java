@@ -34,7 +34,7 @@ public class DialogoAceptar extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Aceptada.");
                         System.out.println(id);
-                        DialogoAceptar.this.getDatosUsers().anadirUsuario();
+                        DialogoAceptar.this.getDatosUsers().guardarOActualizar();///////guardarOActualizar
                         dialog.cancel();
                     }
                 })
