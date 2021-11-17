@@ -17,6 +17,7 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
     public static class UsuariosViewHolder extends RecyclerView.ViewHolder{
         private TextView txtNombre;
         private TextView txtIdioma;
+
         private TextView txtEdad;
         public UsuariosViewHolder(View itemView){
             super(itemView);

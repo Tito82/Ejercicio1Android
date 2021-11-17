@@ -54,13 +54,20 @@ public class NuevoUsuario extends AppCompatActivity {
         spIdioma.setAdapter(adaptador);
 
         Bundle bundle = this.getIntent().getExtras();
-
+        if(bundle.getString("EMAIL") == null) {
+            btEliminar.setVisibility(View.GONE);
+        }
         txtEmail.setText(bundle.getString("EMAIL"));
         txtPass.setText(bundle.getString("PASS"));
+        txtNombreUsuario.setText(bundle.getString("NOMBRE"));
         if(bundle.getString("EMAIL") != null) {
         spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
-        txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));}
-        txtNombreUsuario.setText(bundle.getString("NOMBRE"));
+        txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
+
+        }
+        //////////////ocultar boton nuevo usuario
+
+
         btAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)  {
@@ -68,21 +75,23 @@ public class NuevoUsuario extends AppCompatActivity {
                DialogoAceptar dialogo = new DialogoAceptar(NuevoUsuario.this);
                dialogo.show(fragmentManager, "tagConfirmacion");
             }
-
-
         });
 
         btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cancelar();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoCancelar cancelar = new DialogoCancelar(NuevoUsuario.this);
+                cancelar.show(fragmentManager, "tagConfirmacion");
             }
         });
 
         btEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                eliminarUsuario();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                DialogoEliminar eliminar = new DialogoEliminar(NuevoUsuario.this);
+                eliminar.show(fragmentManager, "tagConfirmacion");
             }
         });
 
@@ -124,40 +133,34 @@ public class NuevoUsuario extends AppCompatActivity {
         datosNuevos.put("edad",Integer.parseInt(txtEdad.getText().toString()));
         datosNuevos.put("nombre",txtNombreUsuario.getText().toString());
         db.insert("usuarios",null,datosNuevos);
-        //db.close();
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
 
     }
-    private void eliminarUsuario() {
+    public void eliminarUsuario() {
         db.delete("usuarios", "email=" + "'" + txtEmail.getText().toString() + "'", null);
-        //db.close();
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    private void editarUsuario(){
+
+   public void editarUsuario(){
         ContentValues  datosEditados= new ContentValues();
         datosEditados.put("email",txtEmail.getText().toString());
         datosEditados.put("password",txtPass.getText().toString());
         datosEditados.put("idioma", stringIdioma);
         datosEditados.put("edad",Integer.parseInt(txtEdad.getText().toString()));
         datosEditados.put("nombre",txtNombreUsuario.getText().toString());
-        //db.update("usuarios",null,datosEditados);
         db.update("Usuarios", datosEditados, "email='" + txtEmail.getText().toString() +"'", null);
-        //db.close();
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
     public void guardarOActualizar(){
-       if(txtEmail.getText()==null){
-            anadirUsuario();
-        }else{
-            editarUsuario();
-        }
+      anadirUsuario();
+      editarUsuario();
+
     }
 
-    private void cancelar() {
+    public void cancelar() {
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }

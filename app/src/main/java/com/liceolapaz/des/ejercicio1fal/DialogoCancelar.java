@@ -4,14 +4,15 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-public class DialogoAceptar extends DialogFragment {
+public class DialogoCancelar extends DialogFragment {
 
     private NuevoUsuario nuevoUsuario;
 
-    public DialogoAceptar(NuevoUsuario nuevoUsuario) {
+    public DialogoCancelar(NuevoUsuario nuevoUsuario) {
         this.nuevoUsuario = nuevoUsuario;
     }
 
@@ -28,13 +29,13 @@ public class DialogoAceptar extends DialogFragment {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(getActivity());
 
-        builder.setMessage("Los datos se guardarán en la base de datos.¿Está seguro?")
-                .setTitle("Aceptar")
+        builder.setMessage("Los datos no se guardarán.¿Está seguro?")
+                .setTitle("Cancelar")
                 .setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Aceptada.");
                         System.out.println(id);
-                        DialogoAceptar.this.getDatosUsers().anadirUsuario();////////////////////////////////////////////////
+                        DialogoCancelar.this.getDatosUsers().cancelar();
                         dialog.cancel();
                     }
                 })
@@ -44,15 +45,9 @@ public class DialogoAceptar extends DialogFragment {
                         System.out.println(id);
                         dialog.cancel();
                     }
-                })
-                .setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Log.i("Dialogos", "Confirmacion Cancelada.");
-                        System.out.println(id);
-                        dialog.cancel();
-                    }
                 });
         return builder.create();
     }
 
 }
+

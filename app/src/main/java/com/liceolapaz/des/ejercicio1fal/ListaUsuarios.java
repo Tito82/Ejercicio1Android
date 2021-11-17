@@ -51,7 +51,6 @@ public class ListaUsuarios extends AppCompatActivity {
                 bundle.putString("IDIOMA", users.get(recyclerW.getChildAdapterPosition(view)).getIdiomaUsuario());/////////meter spiner
                 intent.putExtras(bundle);
                 startActivity(intent);
-
             }
         });
         cargarUsuarios();
@@ -68,7 +67,6 @@ public class ListaUsuarios extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     private void cargarUsuarios(){ //ejercicio bbss3 jesus
@@ -87,7 +85,6 @@ public class ListaUsuarios extends AppCompatActivity {
         }
         numUsuarios.setText(String.valueOf(users.size()));
         db.close();
-
 
     }
 
