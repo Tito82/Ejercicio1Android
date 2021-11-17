@@ -1,8 +1,5 @@
 package com.liceolapaz.des.ejercicio1fal;
-import android.widget.EditText;
-import android.widget.Spinner;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,10 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toolbar;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 
 public class NuevoUsuario extends AppCompatActivity {
@@ -30,6 +29,7 @@ public class NuevoUsuario extends AppCompatActivity {
     private Button btCancelar;
     private Button btEliminar;
     private Spinner spIdioma;
+    private Toolbar toolbarUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class NuevoUsuario extends AppCompatActivity {
         setContentView(R.layout.nuevo_usuario);
         UsersSQLLiteOpen sqliteOpen = new UsersSQLLiteOpen(this, "UsuariosDDBB", null, 1);
         db = sqliteOpen.getWritableDatabase();
+        toolbarUsuarios = (Toolbar) findViewById(R.id.toolbarUsuarios);
         btAceptar = (Button) findViewById(R.id.btAceptar);
         btCancelar = (Button) findViewById(R.id.btCancelar);
         btEliminar = (Button) findViewById(R.id.btEliminar);
@@ -56,17 +57,18 @@ public class NuevoUsuario extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         if(bundle.getString("EMAIL") == null) {
             btEliminar.setVisibility(View.GONE);
+            toolbarUsuarios.setTitle("Nuevo Usuario");
         }
+
         txtEmail.setText(bundle.getString("EMAIL"));
         txtPass.setText(bundle.getString("PASS"));
         txtNombreUsuario.setText(bundle.getString("NOMBRE"));
+        toolbarUsuarios.setTitle(txtNombreUsuario.getText() + " ( " + txtEmail.getText() + ")");
         if(bundle.getString("EMAIL") != null) {
         spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
         txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
 
         }
-        //////////////ocultar boton nuevo usuario
-
 
         btAceptar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,23 +9,16 @@
     android:orientation="vertical"
     tools:context=".NuevoUsuario">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarNew"
+    <Toolbar
+        android:id="@+id/toolbarUsuarios"
+        app:title=""
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="#2E4BEC"
-        android:baselineAligned="false"
-        android:theme="@style/Theme.AppCompat.DayNight">
+        android:background="#0F2BC6"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:gravity="center_vertical"
-            android:text="Nuevo Usuario"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
-    </androidx.appcompat.widget.Toolbar>
+    </Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
