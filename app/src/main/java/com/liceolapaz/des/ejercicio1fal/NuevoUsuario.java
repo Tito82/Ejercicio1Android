@@ -111,7 +111,7 @@ public class NuevoUsuario extends AppCompatActivity {
                 eliminar.show(fragmentManager, "tagConfirmacion");
             }
         });
-
+/////////////////////////////////////////////coger el item que esta seleccionado
         spIdioma.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {//ejercicio spinner jesus
         public void onItemSelected(AdapterView<?> parent,
                                    View view, int position, long id) {
