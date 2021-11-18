@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +31,7 @@ public class NuevoUsuario extends AppCompatActivity {
     private Button btEliminar;
     private Spinner spIdioma;
     private Toolbar toolbarUsuarios;
+    private boolean existeUsuario = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,17 +67,28 @@ public class NuevoUsuario extends AppCompatActivity {
         txtNombreUsuario.setText(bundle.getString("NOMBRE"));
         toolbarUsuarios.setTitle(txtNombreUsuario.getText() + " ( " + txtEmail.getText() + ")");
         if(bundle.getString("EMAIL") != null) {
+        existeUsuario = true;
         spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
         txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
 
         }
 
         btAceptar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view)  {
-               FragmentManager fragmentManager = getSupportFragmentManager();
-               DialogoAceptar dialogo = new DialogoAceptar(NuevoUsuario.this);
-               dialogo.show(fragmentManager, "tagConfirmacion");
+                if(txtEmail.getText().toString().isEmpty() || txtPass.getText().toString().isEmpty()
+                        || spIdioma.getSelectedItemPosition() == 0 || txtEdad.getText().toString().isEmpty() ||
+                        txtNombreUsuario.getText().toString().isEmpty()){
+
+                    Toast.makeText(getApplicationContext(), "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+                }else {
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    DialogoAceptar dialogo = new DialogoAceptar(NuevoUsuario.this);
+                    dialogo.show(fragmentManager, "tagConfirmacion");
+                }
+
+
             }
         });
 
@@ -156,14 +169,17 @@ public class NuevoUsuario extends AppCompatActivity {
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
-    public void guardarOActualizar(){
-      anadirUsuario();
-      editarUsuario();
-
-    }
 
     public void cancelar() {
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
+    }
+
+    public boolean isExisteUsuario() {
+        return existeUsuario;
+    }
+
+    public void setExisteUsuario(boolean existeUsuario) {
+        this.existeUsuario = existeUsuario;
     }
 }

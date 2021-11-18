@@ -33,9 +33,14 @@ public class DialogoAceptar extends DialogFragment {
                 .setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Aceptada.");
-                        System.out.println(id);
-                        DialogoAceptar.this.getDatosUsers().anadirUsuario();////////////////////////////////////////////////
-                        dialog.cancel();
+                        if(DialogoAceptar.this.nuevoUsuario.isExisteUsuario() == false){
+                            DialogoAceptar.this.getDatosUsers().anadirUsuario();////////////////////////////////////////////////
+                            dialog.cancel();
+                        }else{
+                            DialogoAceptar.this.getDatosUsers().editarUsuario();////////////////////////////////////////////////
+                            dialog.cancel();
+                        }
+
                     }
                 })
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
