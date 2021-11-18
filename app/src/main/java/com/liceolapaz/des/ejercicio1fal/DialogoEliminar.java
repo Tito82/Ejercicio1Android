@@ -29,7 +29,7 @@ public class DialogoEliminar  extends DialogFragment {
             AlertDialog.Builder builder =
                     new AlertDialog.Builder(getActivity());
 
-            builder.setMessage("Los datos se eliminaran de la base de datos.¿Está seguro?")
+            builder.setMessage("Los datos se eliminaran de la base de datos. ¿Está seguro?")
                     .setTitle("Eliminar")
                     .setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {

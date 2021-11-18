@@ -12,6 +12,7 @@
     <Toolbar
         android:id="@+id/toolbarUsuarios"
         app:title=""
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:background="#0F2BC6"

@@ -57,17 +57,19 @@ public class NuevoUsuario extends AppCompatActivity {
         spIdioma.setAdapter(adaptador);
 
         Bundle bundle = this.getIntent().getExtras();
-        if(bundle.getString("EMAIL") == null) {
-            btEliminar.setVisibility(View.GONE);
-            toolbarUsuarios.setTitle("Nuevo Usuario");
-        }
 
+        if(bundle.getString("EMAIL") == null) {
+            toolbarUsuarios.setTitle("Nuevo Usuario");
+            btEliminar.setVisibility(View.GONE);
+
+        }
         txtEmail.setText(bundle.getString("EMAIL"));
         txtPass.setText(bundle.getString("PASS"));
         txtNombreUsuario.setText(bundle.getString("NOMBRE"));
-        toolbarUsuarios.setTitle(txtNombreUsuario.getText() + " ( " + txtEmail.getText() + ")");
+
         if(bundle.getString("EMAIL") != null) {
         existeUsuario = true;
+        toolbarUsuarios.setTitle(txtNombreUsuario.getText() + " ( " + txtEmail.getText() + ")");
         spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
         txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
 

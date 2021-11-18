@@ -28,7 +28,7 @@ public class DialogoAceptar extends DialogFragment {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(getActivity());
 
-        builder.setMessage("Los datos se guardarán en la base de datos.¿Está seguro?")
+        builder.setMessage("Los datos se guardarán en la base de datos. ¿Está seguro?")
                 .setTitle("Aceptar")
                 .setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {

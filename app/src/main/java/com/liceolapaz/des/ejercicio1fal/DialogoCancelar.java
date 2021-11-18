@@ -29,7 +29,7 @@ public class DialogoCancelar extends DialogFragment {
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(getActivity());
 
-        builder.setMessage("Los datos no se guardarán.¿Está seguro?")
+        builder.setMessage("Los datos no se guardarán. ¿Está seguro?")
                 .setTitle("Cancelar")
                 .setPositiveButton("SÍ", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
