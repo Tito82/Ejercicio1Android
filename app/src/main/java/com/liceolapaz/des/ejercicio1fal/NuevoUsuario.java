@@ -69,8 +69,10 @@ public class NuevoUsuario extends AppCompatActivity {
 
         if(bundle.getString("EMAIL") != null) {
         existeUsuario = true;
+        txtEmail.setEnabled(false);
         toolbarUsuarios.setTitle(txtNombreUsuario.getText() + " ( " + txtEmail.getText() + ")");
         spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
+        stringIdioma = bundle.getString("IDIOMA");
         txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
 
         }
