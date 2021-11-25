@@ -28,9 +28,7 @@ public class ListaUsuarios extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listausuarios);
-
         UsersSQLLiteOpen liteOpen = new UsersSQLLiteOpen(this, "UsuariosDDBB",null,1);
-
         db = liteOpen.getWritableDatabase();
         buttonAgregar = (Button) findViewById(R.id.buttonAgregar);
         users = new ArrayList<Usuario>();
@@ -70,7 +68,6 @@ public class ListaUsuarios extends AppCompatActivity {
     }
 
     private void cargarUsuarios(){ //ejercicio bbss3 jesus
-
         Cursor c = db.rawQuery("SELECT email,password,nombre,idioma,edad FROM usuarios",null);
         if (c.moveToFirst()){
             do{

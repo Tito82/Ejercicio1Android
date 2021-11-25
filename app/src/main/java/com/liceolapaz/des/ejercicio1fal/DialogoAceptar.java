@@ -10,19 +10,15 @@ import androidx.fragment.app.DialogFragment;
 public class DialogoAceptar extends DialogFragment {
 
     private NuevoUsuario nuevoUsuario;
-
     public DialogoAceptar(NuevoUsuario nuevoUsuario) {
         this.nuevoUsuario = nuevoUsuario;
     }
-
     public NuevoUsuario getDatosUsers() {
         return nuevoUsuario;
     }
-
     public void setNuevoUsuarios(NuevoUsuario nuevoUsuario) {
         this.nuevoUsuario = nuevoUsuario;
     }
-
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder =
@@ -46,14 +42,12 @@ public class DialogoAceptar extends DialogFragment {
                 .setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Denegada.");
-                        System.out.println(id);
                         dialog.cancel();
                     }
                 })
                 .setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Log.i("Dialogos", "Confirmacion Cancelada.");
-                        System.out.println(id);
                         dialog.cancel();
                     }
                 });

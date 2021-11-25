@@ -51,22 +51,17 @@ public class NuevoUsuario extends AppCompatActivity {
         idiomas = new String[]{"Selecciona idioma:", "Español(ES)", "Gallego(GL)", "Inglés(EN)"};
 
         ArrayAdapter<String> adaptador =  new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, idiomas);
-
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         spIdioma.setAdapter(adaptador);
 
         Bundle bundle = this.getIntent().getExtras();
-
         if(bundle.getString("EMAIL") == null) {
-            toolbarUsuarios.setTitle("Nuevo Usuario");
-            btEliminar.setVisibility(View.GONE);
-
+        toolbarUsuarios.setTitle("Nuevo Usuario");
+        btEliminar.setVisibility(View.GONE);
         }
         txtEmail.setText(bundle.getString("EMAIL"));
         txtPass.setText(bundle.getString("PASS"));
         txtNombreUsuario.setText(bundle.getString("NOMBRE"));
-
         if(bundle.getString("EMAIL") != null) {
         existeUsuario = true;
         txtEmail.setEnabled(false);
@@ -74,28 +69,21 @@ public class NuevoUsuario extends AppCompatActivity {
         spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
         stringIdioma = bundle.getString("IDIOMA");
         txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
-
         }
-
         btAceptar.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view)  {
                 if(txtEmail.getText().toString().isEmpty() || txtPass.getText().toString().isEmpty()
                         || spIdioma.getSelectedItemPosition() == 0 || txtEdad.getText().toString().isEmpty() ||
                         txtNombreUsuario.getText().toString().isEmpty()){
-
                     Toast.makeText(getApplicationContext(), "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
                 }else {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     DialogoAceptar dialogo = new DialogoAceptar(NuevoUsuario.this);
                     dialogo.show(fragmentManager, "tagConfirmacion");
                 }
-
-
             }
         });
-
         btCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,7 +92,6 @@ public class NuevoUsuario extends AppCompatActivity {
                 cancelar.show(fragmentManager, "tagConfirmacion");
             }
         });
-
         btEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -127,9 +114,7 @@ public class NuevoUsuario extends AppCompatActivity {
         public void onNothingSelected(AdapterView<?> parent) { }
          });
     }
-
     private int seleccionSpinner(Spinner spIdioma, String idioma) {//ejercicio spinner jesus
-
         idiomas = new String[]{"Selecciona idioma:", "Español(ES)", "Gallego(GL)", "Inglés(EN)"};
         int posicion = 0;
         if(idioma.equals("ES")){
@@ -154,14 +139,12 @@ public class NuevoUsuario extends AppCompatActivity {
         db.insert("usuarios",null,datosNuevos);
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
-
     }
     public void eliminarUsuario() {
         db.delete("usuarios", "email=" + "'" + txtEmail.getText().toString() + "'", null);
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
-
    public void editarUsuario(){
         ContentValues  datosEditados= new ContentValues();
         datosEditados.put("email",txtEmail.getText().toString());
@@ -173,16 +156,13 @@ public class NuevoUsuario extends AppCompatActivity {
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
-
     public void cancelar() {
         Intent intent = new Intent(NuevoUsuario.this, ListaUsuarios.class);
         startActivity(intent);
     }
-
     public boolean isExisteUsuario() {
         return existeUsuario;
     }
-
     public void setExisteUsuario(boolean existeUsuario) {
         this.existeUsuario = existeUsuario;
     }

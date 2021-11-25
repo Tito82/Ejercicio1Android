@@ -15,12 +15,10 @@ public class Login extends AppCompatActivity {
     private EditText txtPass;
     private TextView lblError;
     int intentos = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
         btLogin = (Button) findViewById(R.id.buttonLogin);
         lblError = (TextView) findViewById(R.id.mensajeError);
         txtUsuario = (EditText) findViewById(R.id.editUser);
@@ -29,10 +27,8 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
                 String usuario = txtUsuario.getText().toString();
                 String password = txtPass.getText().toString();
-
                 if ((usuario.equals("admin") && password.equals("liceo"))) {
                     Intent intent = new Intent(Login.this, ListaUsuarios.class);
                     startActivity(intent);
