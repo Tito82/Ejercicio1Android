@@ -3,9 +3,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 
@@ -36,13 +34,12 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
     public AdaptadorUsuarios(ArrayList<Usuario> users){
         this.users = users;
     }
-
     @Override
     public UsuariosViewHolder onCreateViewHolder( ViewGroup viewGroup, int viewType) {
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recycler_view, viewGroup,false);
         itemView.setOnClickListener(this);
         UsuariosViewHolder vwHold = new UsuariosViewHolder(itemView);
-    return vwHold;
+        return vwHold;
     }
 
     @Override
@@ -67,3 +64,4 @@ public class AdaptadorUsuarios extends RecyclerView.Adapter<AdaptadorUsuarios.Us
     }
 
 }
+

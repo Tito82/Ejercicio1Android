@@ -8,7 +8,7 @@
     android:background="#B3B3B3"
     android:orientation="vertical"
     tools:context=".NuevoUsuario">
-
+º
     <Toolbar
         android:id="@+id/toolbarUsuarios"
         app:title=""

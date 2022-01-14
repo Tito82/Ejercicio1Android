@@ -55,6 +55,7 @@ public class NuevoUsuario extends AppCompatActivity {
         spIdioma.setAdapter(adaptador);
 
         Bundle bundle = this.getIntent().getExtras();
+
         if(bundle.getString("EMAIL") == null) {
         toolbarUsuarios.setTitle("Nuevo Usuario");
         btEliminar.setVisibility(View.GONE);
@@ -62,11 +63,12 @@ public class NuevoUsuario extends AppCompatActivity {
         txtEmail.setText(bundle.getString("EMAIL"));
         txtPass.setText(bundle.getString("PASS"));
         txtNombreUsuario.setText(bundle.getString("NOMBRE"));
+
         if(bundle.getString("EMAIL") != null) {
         existeUsuario = true;
         txtEmail.setEnabled(false);
         toolbarUsuarios.setTitle(txtNombreUsuario.getText() + " ( " + txtEmail.getText() + ")");
-        spIdioma.setSelection(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
+        spIdioma.setSelecti on(seleccionSpinner(spIdioma, bundle.getString("IDIOMA")), true);
         stringIdioma = bundle.getString("IDIOMA");
         txtEdad.setText(String.valueOf(bundle.getInt("EDAD")));
         }
